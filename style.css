@@ -1,0 +1,84 @@
+body {
+  background-color: antiquewhite;
+}
+
+.enlace-superior {
+  position: auto; /* Fija la posición del elemento */
+  top: 0; /* Coloca el elemento en la parte superior */
+  background-color: #f1f1f1; /* Color de fondo del enlace */
+  padding: 10px 20px; /* Espaciado interno */
+  text-decoration: ; /* Elimina la subrayado del enlace */
+  color: #f50606; /* Color del texto */
+  border-radius: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #f1f1f1;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  
+}
+
+.card {
+  margin-bottom: 30px;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.card code {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+/* por defecto*/
+.menu {
+  position: relative;
+  display: block;
+  width: 100vw;
+  padding: 20px;
+  overflow-y: scroll;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.go-up {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+/** tablet y desktop */
+@media screen and (min-width: 768px) {
+  .wrapper {
+    flex-direction: row;
+  }
+  .menu {
+    position: fixed;
+    width: 30vw;
+    height: 100vh;
+  }
+  .menu a {
+    display: block;
+  }
+
+  main {
+    margin-left: 30vw;
+    width: 70vw;
+  }
+
+}

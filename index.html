@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJERCICIOS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<title><link rel="stylesheet" href="https://we.tl/t-ITV5GqM5Oq"></title>
+<body>
+    <div id="inicio" class="wrapper">
+        
+        <nav class="menu">
+        <a href="https://we.tl/t-ITV5GqM5Oq" class="enlace-superior" target="_blank">BASE DE DATOS</a>
+        <a href="#ejercicio-1" class="btn btn-danger">Ejercicio 1</a>
+        <a href="#ejercicio-2" class="btn btn-danger">Ejercicio 2</a>
+        <a href="#ejercicio-3" class="btn btn-danger">Ejercicio 3</a>
+        <a href="#ejercicio-4" class="btn btn-danger">Ejercicio 4</a>
+        <a href="#ejercicio-5" class="btn btn-danger">Ejercicio 5</a>
+        <a href="#ejercicio-6" class="btn btn-danger">Ejercicio 6</a>
+        <a href="#ejercicio-7" class="btn btn-danger">Ejercicio 7</a>
+        <a href="#ejercicio-8" class="btn btn-danger">Ejercicio 8</a>
+        <a href="#ejercicio-9" class="btn btn-danger">Ejercicio 9</a>
+        <a href="#ejercicio-10" class="btn btn-danger">Ejercicio 10</a>
+        <a href="#ejercicio-11" class="btn btn-danger">Ejercicio 11</a>
+        <a href="#ejercicio-12" class="btn btn-danger">Ejercicio 12</a>
+        <a href="#ejercicio-13" class="btn btn-danger">Ejercicio 13</a>
+        <a href="#ejercicio-14" class="btn btn-danger">Ejercicio 14</a>
+        <a href="#ejercicio-15" class="btn btn-danger">Ejercicio 15</a>
+        <img src="./db.png" class="img-fluid" alt="">
+    </nav>
+    <main>
+        <div class="container-fluid mt-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card" id="ejercicio-1">
+                        <div class="card-body">
+                            <h2>Ejercicio #1</h2>
+                            <p>Listado de usuarios registrados en la base de datos </p>
+                            <ul>
+                                <li>Nombres</li>
+                                <li>Apellidos</li>
+                                <li>Correo</li>
+            
+                            </ul>
+                            <code>
+                                SELECT names, lastname, email FROM users;
+                            </code>
+                            <img src="./1.png" alt="">
+                        </div>
+                    </div>
+                    <div class="card" id="ejercicio-2">
+                        <div class="card-body">
+                            <h2>Ejercicio #2</h2>
+                            <p>Listado de departamentos registrados en la base de datos </p>
+                            <ul>
+                                <li>Nombre del departamento</li>
+                                <li>Nombre del pais</li>
+                    
+                            </ul>
+                            <code>
+                                SELECT d.name AS department_name, c.name AS country_name FROM departments d JOIN countries c ON d.countries_id = c.id;
+                            </code>
+                            <img src="./2.png" alt="">
+                        </div>
+                    </div>
+                    <div class="card" id="ejercicio-3">
+                        <div class="card-body">
+                            <h2>Ejercicio #3</h2>
+                            <p>Listado de escuelas por un pais predeterminado </p>
+                            <ul>
+                                <li>Nombre de la escuela</li>
+                                <li>Nombre del pais</li>
+                    
+                            </ul>
+                            <code>
+                            SELECT s.name AS school_name, c.name AS country_name
+                            FROM schools s
+                            JOIN countries c ON s.countries_id = c.id
+                            WHERE c.id = (SELECT id FROM countries WHERE name = 'colombia');
+                            </code>
+                            <img src="./3.png" alt="">
+                        </div>
+                    </div>
+                    <div class="card" id="ejercicio-4">
+                        <div class="card-body">
+                            <h2>Ejercicio #4</h2>
+                            <p>Listado de usuarios ordenados de mayor edad a menor edad </p>
+                            <ul>
+                                <li>Nombres</li>
+                                <li>Apellidos</li>
+                                <li>Fecha de nacimiento</li>
+                    
+                            </ul>
+                            <code>
+                                SELECT names, lastname, date_birth
+                                FROM users
+                                ORDER BY date_birth DESC;
+                            </code>
+                            <img src="./4.png" alt="">
+                        </div>
+                    </div>
+                    <div class="card" id="ejercicio-5">
+                        <div class="card-body">
+                            <h2>Ejercicio #5</h2>
+                            <p>En que departamento hay mas usuarios registrados </p>
+                            <ul>
+                                <li>Departamento</li>
+                                <li>ID</li>
+                    
+                    
+                            </ul>
+                            <code>
+                                SELECT d.name AS department_name, COUNT(u.id) AS total_users
+                                FROM departments d
+                                JOIN users u ON d.id = u.departments_id
+                                GROUP BY d.name
+                                ORDER BY total_users DESC
+                                LIMIT 1;
+                            </code>
+                            <img src="./5.png" alt="">
+                        </div>
+                    </div>
+                    <div class="card" id="ejercicio-6">
+                        <div class="card-body">
+                            <h2>Ejercicio #6</h2>
+                            <p>Cual es el pais con mas usuarios registrados </p>
+                            <ul>
+                                <li>Pais</li>
+                                <li>ID</li>
+                    
+                            </ul>
+                            <code>
+                                SELECT c.name AS country_name, COUNT(u.id) AS total_users
+                                FROM countries c
+                                JOIN departments d ON c.id = d.countries_id
+                                JOIN users u ON d.id = u.departments_id
+                                GROUP BY c.name
+                                ORDER BY total_users DESC
+                                LIMIT 1;
+                            </code>
+                            <img src="./6.png" alt="">
+                        </div>
+                    </div>
+                    <div class="card" id="ejercicio-7">
+                        <div class="card-body">
+                            <h2>Ejercicio #7</h2>
+                            <p>Listar solo 3 departamentos </p>
+                            <ul>
+                                <li>Nombres</li>
+                                <li>Departamento</li>
+                                <li>ID</li>
+                    
+                            </ul>
+                            <code>
+                                SELECT name AS department_name, id
+                                FROM departments
+                                WHERE id BETWEEN 1 AND 3;
+                            </code>
+                            <img src="./7.png" alt="">
+                        </div>
+                    </div>
+                    <div class="card" id="ejercicio-8">
+                        <div class="card-body">
+                            <h2>Ejercicio #8</h2>
+                            <p>Listar la informacion de un usuario determinado</p>
+                            <ul>
+                                <li>Nombres</li>
+                                <li>Apellidos</li>
+                                <li>Correo</li>
+                                <li>Nombre del colegio</li>
+                                <li>nombre del departamento</li>
+                                <li>nombre del Pais</li>
+                    
+                            </ul>
+                            <code>
+                                SELECT u.names, u.lastname, u.email, s.name AS school_name, d.name AS department_name, c.name AS country_name
+                                FROM users u
+                                JOIN schools s ON u.schools_id = s.id
+                                JOIN departments d ON u.departments_id = d.id
+                                JOIN countries c ON d.countries_id = c.id
+                                WHERE u.id = '10';
+                            </code>
+                            <img src="./8.png" alt="">
+                        </div>
+                    </div>
+                    <div class="card" id="ejercicio-9">
+                        <div class="card-body">
+                            <h2>Ejercicio #9</h2>
+                            <p>Listado de usuarios con un nombre determinado </p>
+                            <ul>
+                                <li>Nombres</li>
+                                <li>Apellidos</li>
+                    
+                            </ul>
+                            <code>
+                                SELECT names, lastname
+                                FROM users
+                                WHERE names = 'carlos';
+                            </code>
+                            <img src="./9.png" alt="">
+                        </div>
+                    </div>
+                    <div class="card" id="ejercicio-10">
+                        <div class="card-body">
+                            <h2>Ejercicio #10</h2>
+                            <p>Cuantos usuarios viven en un departamento determinado </p>
+                            <ul>
+                                <li>Cantidad de usuarios</li>
+                    
+                            </ul>
+                            <code>
+                                SELECT COUNT(*) AS cantidad_usuarios
+                                FROM users
+                                WHERE departments_id = 5;
+                            </code>
+                            <img src="./10.png" alt="">
+                        </div>
+                    </div>
+                    <div class="card" id="ejercicio-11">
+                        <div class="card-body">
+                            <h2>Ejercicio #11</h2>
+                            <p>Listado de usuarios que tengan mas de 20 años </p>
+                            <ul>
+                                <li>Nombres</li>
+                                <li>Apellidos</li>
+                                <li>Fecha de nacimiento</li>
+                    
+                            </ul>
+                            <code>
+                                SELECT names, lastname, date_birth
+                                FROM users
+                                WHERE date_birth <= DATE_SUB(CURDATE(), INTERVAL 20 YEAR);
+                            </code>
+                            <img src="./11.png" alt="">
+                        </div>
+                    </div>
+                    <div class="card" id="ejercicio-12">
+                        <div class="card-body">
+                            <h2>Ejercicio #12</h2>
+                            <p>Listado de usuarios que tengan de 20 a 60 años </p>
+                            <ul>
+                                <li>Nombres</li>
+                                <li>Apellidos</li>
+                                <li>nombre capital</li>
+                    
+                            </ul>
+                            <code>
+                                SELECT users.names, users.lastname, countries.capital
+                                FROM users
+                                JOIN departments ON users.departments_id = departments.id
+                                JOIN countries ON departments.countries_id = countries.id
+                                WHERE TIMESTAMPDIFF(YEAR, users.date_birth, CURDATE()) BETWEEN 20 AND 60;
+                            </code>
+                            <img src="./12.png" alt="">
+                        </div>
+                    </div>
+                    <div class="card" id="ejercicio-13">
+                        <div class="card-body">
+                            <h2>Ejercicio #13</h2>
+                            <p>Listado de colegios con el numero 7 en su telefono </p>
+                            <ul>
+                                <li>Nombre del colegio</li>
+                                <li>telefono</li>
+                                <li>ID</li>
+                    
+                            </ul>
+                            <code>
+                                SELECT name, address, phone
+                                FROM schools
+                                WHERE phone LIKE '%7%';
+                            </code>
+                            <img src="./13.png" alt="">
+                        </div>
+                    </div>
+                    <div class="card" id="ejercicio-14">
+                        <div class="card-body">
+                            <h2>Ejercicio #14</h2>
+                            <p>Listado de usuarios que no esten asociados a ningun departamento </p>
+                            <ul>
+                
+                            </ul>
+                            <code>
+                                SELECT names, lastname
+                                FROM users
+                                WHERE departments_id IS NULL;
+                            </code>
+                            <img src="./14.png" alt="">
+                        </div>
+                    </div> 
+                    <div class="card" id="ejercicio-15">
+                        <div class="card-body">
+                            <h2>Ejercicio #15</h2>
+                            <p>Listado de usuarios que no esten asociados a ningun colegio </p>
+                            <ul>
+                    
+                            </ul>
+                            <code>
+                                SELECT names, lastname
+                                FROM users
+                                WHERE schools_id IS NULL;
+                            </code>
+                            <img src="./15.png" alt="">
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </main>
+    </div>
+    <a href="#inicio" class="btn btn-info go-up">Ir arriba</a>
+</body>
+</html>
